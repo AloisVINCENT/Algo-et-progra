@@ -38,6 +38,34 @@ char *reverse_string(char *string)
     return reverse;
 }
 
+bool palindrome(char *string)
+{
+    char *reverse = reverse_string(string);
+    // get the reverse of the string
+    bool palindrome = true;
+    // set the palindrome to true
+    for (int i = 0; i < length_string(string); i++)
+    // loop for the number of characters in the string
+    {
+        if (string[i] != reverse[i])
+        // if the current character is not the same as the reverse
+        {
+            palindrome = false;
+            // set the palindrome to false
+            break;
+        }
+    }
+    free(reverse);
+    // free the reverse string
+    return palindrome;
+}
+
+bool str_palindrome(char *string1, char *string2)
+{
+    if
+}
+
+
 int main()
 {
     char string[1000];
@@ -46,4 +74,5 @@ int main()
     scanf(" %s", &string);
     printf("The length of the string is: %d\n", length_string(string));
     printf("The reverse of the string is: %s\n", reverse_string(string));
+    printf("Is the string a palindrome? %s\n", palindrome(string) ? "Yes" : "No");
 }
