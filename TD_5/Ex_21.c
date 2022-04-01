@@ -67,7 +67,7 @@ bool str_palindrome(char *string1, char *string2)
     {
         return false;
     }
-    
+
     for (int i = 0; i < length_string(string1); i++)
     {
         if (string1[i] != mirror[i])
@@ -78,19 +78,22 @@ bool str_palindrome(char *string1, char *string2)
     return true;
 }
 
-
 int main()
 {
-    char string[1000];
+    char stringi[256];
     // array of characters to store the string
     printf("Enter a string: \n");
-    scanf(" %s", &string);
+    scanf(" %s", &stringi);
+    malloc(sizeof(stringi));
+    char string[length_string(stringi)];
+    printf("Enter another string: \n");
+    scanf(" %s", &stringi);
+    char string2[length_string(stringi)];
+    free(stringi);
+    printf("Is the string a palindrome? %s\n", str_palindrome(string, string2) ? "Yes" : "No");
     printf("The length of the string is: %d\n", length_string(string));
     printf("The reverse of the string is: %s\n", reverse_string(string));
     printf("Is the string a palindrome? %s\n", palindrome(string) ? "Yes" : "No");
-    printf("Enter another string: \n");
-    char string2[1000];
-    // array of characters to store the second string
-    scanf(" %s", &string2);
-    printf("Is the string a palindrome? %s\n", str_palindrome(string, string2) ? "Yes" : "No");
+    printf("\n");
 }
+//how does malloc work ? https://www.geeksforgeeks.org/malloc-in-c/
