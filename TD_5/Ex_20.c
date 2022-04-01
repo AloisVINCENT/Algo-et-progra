@@ -84,13 +84,13 @@ int main()
     char string[1000];
     // array of characters to store the string
     printf("Enter a string: \n");
-    scanf(" %s", &string);
+    scanf(" %d", &string);
     printf("The length of the string is: %d\n", length_string(string));
     printf("The reverse of the string is: %s\n", reverse_string(string));
     printf("Is the string a palindrome? %s\n", palindrome(string) ? "Yes" : "No");
     printf("Enter another string: \n");
     char string2[1000];
     // array of characters to store the second string
-    scanf(" %s", &string2);
+    scanf(" %d", &string2);
     printf("Is the string a palindrome? %s\n", str_palindrome(string, string2) ? "Yes" : "No");
 }
