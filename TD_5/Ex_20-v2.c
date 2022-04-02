@@ -4,57 +4,74 @@
 #include <stdbool.h>
 #include <math.h>
 
-int length_str(char string[124])
+int length_str(char *string)
 {
     int length = 0;
-    for (int i = 0; i < 1000; i++)
-    // loop for the number of characters in the string
+    while (string[length] != '\0')
     {
-        if (string[i] == '\0')
-        // if the current character is the end of the string
-        {
-            break;
-        }
         length++;
     }
     return length;
 }
 
-char reverse_str(char *string)
+char *reverse_str(char *string)
 {
     int length = length_str(string);
+    char *result = malloc((length_str(string) + 1) * sizeof(char));
     char temp;
-    for (int i = 0; i < length / 2; i++)
+    for (int i = 0; i < length; i++)
     {
         // Copy the first character to a temporary variable
         temp = string[i];
         // Copy the last character to the first character
-        string[i] = string[length - i - 1];
+        result[i] = string[length - i - 1];
         // Copy the temporary variable to the last character
-        string[length - i - 1] = temp;
+        result[length - i - 1] = temp;
     }
-    return *string;
+    return result;
 }
 
 bool palindrome(char *string)
 {
     int length = length_str(string);
-    for (int i = 0; i <= length; i++)
+    for (int i = 0; i < length; i++)
     {
-        if (string[i] != reverse_str(string[i]))
+        if (string[i] != string[length - i - 1])
         {
             return false;
         }
-        return true;
     }
+    return true;
+}
+
+bool palindrome2(char *str1, char *str2)
+{
+    if (length_str(str1) != length_str(str2))
+    {
+        return false;
+    }
+    int length = length_str(str1);
+    for (int i = 0; i < length; i++)
+    {
+        if (str1[i] != str2[length - i - 1])
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 int main()
 {
-    char string[124];
-    printf("Enter a string: ");
-    scanf("%s", string);
-    printf("The length of the string is %d.\n", length_str(string));
-    printf("The reversed string is %s.\n", reverse_str(string));
-    printf("The string is %s\n", palindrome ? "a palindrome" : "not a palindrome");
+    char string1[100];
+    char *pstring1 = string1;
+    char string2[100];
+    char *pstring2 = string2;
+    printf("Enter 2 strings: ");
+    scanf("%s", pstring1);
+    scanf("%s", pstring2);
+    printf("The length of the string is %d.\n", length_str(pstring1));
+    printf("The reversed string is %s.\n", reverse_str(pstring1));
+    printf("The string is %s\n", palindrome(pstring1) ? "a palindrome" : "not a palindrome");
+    printf("The two strings are %s\n", palindrome2(pstring1, pstring2) ? "palindromes" : "not palindromes");
 }
