@@ -39,19 +39,15 @@ unsigned int fibo(unsigned int n)
     {
         return 1;
     }
-    else if (n == 2)
-    {
-        return 1;
-    }
     // Sinon, on calcule le nombre de fibonnaci en additionnant les variables temporaires
     // et on incrémente le compteur jusqu'à ce que le compteur soit égal à n
     else
     {
         // On commence à n = 2 car on a déjà calculé les 2 premiers nombres de fibonacci
         
-        temp1 = 1;
+        temp1 = 0;
         temp2 = 1;
-        while (count < n)
+        while (count <= n)
         {
             result = temp1 + temp2;
             temp1 = temp2;
